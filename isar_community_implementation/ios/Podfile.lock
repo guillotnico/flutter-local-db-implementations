@@ -1,0 +1,28 @@
+PODS:
+  - Flutter (1.0.0)
+  - isar_community_flutter_libs (1.0.0):
+    - Flutter
+  - objective_c (0.0.1):
+    - Flutter
+
+DEPENDENCIES:
+  - Flutter (from `Flutter`)
+  - isar_community_flutter_libs (from `.symlinks/plugins/isar_community_flutter_libs/ios`)
+  - objective_c (from `.symlinks/plugins/objective_c/ios`)
+
+EXTERNAL SOURCES:
+  Flutter:
+    :path: Flutter
+  isar_community_flutter_libs:
+    :path: ".symlinks/plugins/isar_community_flutter_libs/ios"
+  objective_c:
+    :path: ".symlinks/plugins/objective_c/ios"
+
+SPEC CHECKSUMS:
+  Flutter: cabc95a1d2626b1b06e7179b784ebcf0c0cde467
+  isar_community_flutter_libs: cf478bdca01f7fb2bde0320930a785456748f1ad
+  objective_c: 77e887b5ba1827970907e10e832eec1683f3431d
+
+PODFILE CHECKSUM: 3c63482e143d1b91d2d2560aee9fb04ecc74ac7e
+
+COCOAPODS: 1.16.2
