@@ -4,7 +4,47 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e42f73de-0098-4169-b7d2-b4cf8038d13e" name="Changes" comment="" />
+    <list default="true" id="e42f73de-0098-4169-b7d2-b4cf8038d13e" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/hive_implementation/integration_test/app_test.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/datasources/fruit_local_datasource.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/hive/boxes.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/models/fruit_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/repositories/fruit_repository_impl.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/domain/entities/fruit.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/domain/repositories/fruit_repository.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/domain/usecases/get_all_fruits.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/presentation/pages/fruits_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/presentation/providers/fruit_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/presentation/widgets/fruit_tile.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/test/data/datasources/fruit_local_data_source_test.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/test/data/repositories/fruit_repository_impl_test.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/test/domain/usecases/get_all_fruits_test.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/test/fixtures/fruit_fixtures.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/test/presentation/pages/fruits_page_test.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/hive_implementation/test/presentation/providers/fruit_provider_test.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/data/datasources/fruit_local_datasource.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/data/datasources/objectbox_store.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/data/models/fruit_model.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/data/repositories/fruit_repository_impl.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/domain/entities/fruit.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/domain/repositories/fruit_repository.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/domain/usecases/get_all_fruits.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/pages/fruits_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/pages/objectbox_debug_page.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/providers/fruit_provider.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/widgets/fruit_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/test/widget_test.dart" beforeDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -13,25 +53,35 @@
   <component name="ClangdSettings">
     <option name="formatViaClangd" value="false" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
-  <component name="GitHubPullRequestSearchHistory"><![CDATA[{
-  "lastFilter": {
-    "state": "OPEN",
-    "assignee": "guillotnico"
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;guillotnico&quot;
   }
-}]]></component>
-  <component name="GithubPullRequestsUISettings"><![CDATA[{
-  "selectedUrlAndAccountId": {
-    "url": "https://github.com/guillotnico/flutter-local-db-implementations.git",
-    "accountId": "526ee374-4775-4b81-84ea-aac3186ab775"
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/guillotnico/flutter-local-db-implementations.git&quot;,
+    &quot;accountId&quot;: &quot;526ee374-4775-4b81-84ea-aac3186ab775&quot;
   }
-}]]></component>
-  <component name="ProjectColorInfo"><![CDATA[{
-  "associatedIndex": 4
-}]]></component>
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
   <component name="ProjectId" id="35moCVHZZEzFPiYsCM6EuqJcJvJ" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -48,10 +98,23 @@
     "dart.analysis.tool.window.visible": "false",
     "git-widget-placeholder": "master",
     "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "/Users/nicolasguillot/AndroidStudioProjects/flutter-local-db-implementations",
+    "last_opened_file_path": "/Users/nicolasguillot/AndroidStudioProjects/flutter-local-db-implementations/objectbox_implementation/lib/features/fruits/presentation/pages",
+    "settings.editor.selected.configurable": "dart.settings",
     "show.migrate.to.gradle.popup": "false"
   }
 }]]></component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/pages" />
+      <recent name="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/widgets" />
+      <recent name="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/providers" />
+      <recent name="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/domain/usecases" />
+      <recent name="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/domain/repositories" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits" />
+    </key>
+  </component>
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">
       <changelist id="e42f73de-0098-4169-b7d2-b4cf8038d13e" name="Changes" comment="" />
