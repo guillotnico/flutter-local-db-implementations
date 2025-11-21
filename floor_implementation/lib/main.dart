@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:path/path.dart' as p;
+import 'package:path_provider/path_provider.dart';
 import 'package:provider/provider.dart';
 
 import 'features/fruits/data/datasources/app_database.dart';
@@ -12,9 +14,14 @@ import 'features/fruits/presentation/providers/fruit_provider.dart';
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
 
+  final dir = await getApplicationDocumentsDirectory();
+  final dbPath = p.join(dir.path, 'fruits_floor.db');
+
+  debugPrint('Floor DB path: $dbPath');
+
   // AppDatabase est générée en $FloorAppDatabase dans app_database.g.dart
   final database =
-  await $FloorAppDatabase.databaseBuilder('fruits_floor.db').build();
+  await $FloorAppDatabase.databaseBuilder(dbPath).build();
 
   final fruitDao = database.fruitDao;
 
