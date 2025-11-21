@@ -1,0 +1,52 @@
+{
+  "_note1": "KEEP THIS FILE! Check it into a version control system (VCS) like git.",
+  "_note2": "ObjectBox manages crucial IDs for your object model. See docs for details.",
+  "_note3": "If you have VCS merge conflicts, you must resolve them according to ObjectBox docs.",
+  "entities": [
+    {
+      "id": "1:4927218760964113564",
+      "lastPropertyId": "5:4614158817357441260",
+      "name": "FruitModel",
+      "properties": [
+        {
+          "id": "1:805480291328667039",
+          "name": "obxId",
+          "type": 6,
+          "flags": 1
+        },
+        {
+          "id": "2:6874898488777048778",
+          "name": "id",
+          "type": 9
+        },
+        {
+          "id": "3:2019607985324178582",
+          "name": "name",
+          "type": 9
+        },
+        {
+          "id": "4:6915587409634686371",
+          "name": "color",
+          "type": 9
+        },
+        {
+          "id": "5:4614158817357441260",
+          "name": "price",
+          "type": 8
+        }
+      ],
+      "relations": []
+    }
+  ],
+  "lastEntityId": "1:4927218760964113564",
+  "lastIndexId": "0:0",
+  "lastRelationId": "0:0",
+  "lastSequenceId": "0:0",
+  "modelVersion": 5,
+  "modelVersionParserMinimum": 5,
+  "retiredEntityUids": [],
+  "retiredIndexUids": [],
+  "retiredPropertyUids": [],
+  "retiredRelationUids": [],
+  "version": 1
+}

@@ -4,46 +4,286 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="e42f73de-0098-4169-b7d2-b4cf8038d13e" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/hive_implementation/integration_test/app_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/datasources/fruit_local_datasource.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/hive/boxes.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/models/fruit_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/repositories/fruit_repository_impl.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/domain/entities/fruit.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/domain/repositories/fruit_repository.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/domain/usecases/get_all_fruits.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/presentation/pages/fruits_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/presentation/providers/fruit_provider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/presentation/widgets/fruit_tile.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/test/data/datasources/fruit_local_data_source_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/test/data/repositories/fruit_repository_impl_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/test/domain/usecases/get_all_fruits_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/test/fixtures/fruit_fixtures.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/test/presentation/pages/fruits_page_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/hive_implementation/test/presentation/providers/fruit_provider_test.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/data/datasources/fruit_local_datasource.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/data/datasources/objectbox_store.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/data/models/fruit_model.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/data/repositories/fruit_repository_impl.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/domain/entities/fruit.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/domain/repositories/fruit_repository.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/domain/usecases/get_all_fruits.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/pages/fruits_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/pages/objectbox_debug_page.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/providers/fruit_provider.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/features/fruits/presentation/widgets/fruit_tile.dart" afterDir="false" />
+    <list default="true" id="e42f73de-0098-4169-b7d2-b4cf8038d13e" name="Changes" comment="feat: Implement Hive-based fruit persistence feature&#10;&#10;This commit introduces a complete feature for managing a list of fruits using Hive for local persistence. The implementation follows a clean architecture pattern.&#10;&#10;- **Feature Structure:**&#10;  - Adds domain, data, and presentation layers for a 'fruits' feature.&#10;  - Includes entities, repositories, use cases, models, and datasources.&#10;  - Implements a `FruitProvider` using the Provider package for state management.&#10;  - Creates a `FruitListPage` to display the list of fruits and a `FruitTile` widget.&#10;&#10;- **Persistence:**&#10;  - Integrates `hive_ce` and `hive_ce_flutter` for database operations.&#10;  - Sets up Hive initialization in `main.dart`, including adapter registration.&#10;  - Implements `FruitLocalDataSource` to interact with the Hive box.&#10;  - The repository seeds the database with initial data if it's empty.&#10;&#10;- **Testing:**&#10;  - Adds comprehensive unit tests for the data source, repository, use case, and provider using `mocktail`.&#10;  - Includes widget tests for the `FruitListPage`.&#10;  - Adds integration tests (`integration_test`) to verify app startup and the pull-to-refresh functionality.&#10;  - Removes the default Flutter counter widget test.&#10;&#10;- **iOS/macOS Configuration:**&#10;  - Updates Xcode project files (`.pbxproj`, `.xcconfig`, `.xcworkspacedata`) to include CocoaPods dependencies, likely for Hive.">
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/.metadata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/analysis_options.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/kotlin/com/example/objectbox_implementation/MainActivity.kt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/res/values-night/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/build.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/gradle.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/android/settings.gradle.kts" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Podfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Podfile.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/Runner/Runner-Bridging-Header.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/ios/RunnerTests/RunnerTests.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/main.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/objectbox-model.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/lib/objectbox.g.dart" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/flutter/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/runner/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/runner/main.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/runner/my_application.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/linux/runner/my_application.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Flutter/Flutter-Debug.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Flutter/Flutter-Release.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Podfile" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/AppDelegate.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Base.lproj/MainMenu.xib" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Configs/AppInfo.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Configs/Debug.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Configs/Release.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Configs/Warnings.xcconfig" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/DebugProfile.entitlements" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Info.plist" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/MainFlutterWindow.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/Runner/Release.entitlements" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/macos/RunnerTests/RunnerTests.swift" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/pubspec.lock" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/pubspec.yaml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/web/favicon.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/web/icons/Icon-192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/web/icons/Icon-512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/web/icons/Icon-maskable-192.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/web/icons/Icon-maskable-512.png" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/web/index.html" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/web/manifest.json" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/.gitignore" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/flutter/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/CMakeLists.txt" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/Runner.rc" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/flutter_window.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/flutter_window.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/main.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/resource.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/resources/app_icon.ico" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/runner.exe.manifest" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/utils.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/utils.h" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/win32_window.cpp" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/objectbox_implementation/windows/runner/win32_window.h" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_implementation/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/hive_implementation/test/widget_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/.metadata" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/.metadata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/analysis_options.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/analysis_options.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/debug/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/debug/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/kotlin/com/example/hive_implementation/MainActivity.kt" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/kotlin/com/example/hive_implementation/MainActivity.kt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/res/drawable-v21/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/res/drawable-v21/launch_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/res/drawable/launch_background.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/res/drawable/launch_background.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/res/mipmap-hdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/res/mipmap-mdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/res/mipmap-xhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/res/mipmap-xxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/res/mipmap-xxxhdpi/ic_launcher.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/res/values-night/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/res/values-night/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/main/res/values/styles.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/main/res/values/styles.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/app/src/profile/AndroidManifest.xml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/app/src/profile/AndroidManifest.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/build.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/build.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/gradle.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/gradle.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/android/settings.gradle.kts" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/android/settings.gradle.kts" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/integration_test/app_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/integration_test/app_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Flutter/AppFrameworkInfo.plist" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Flutter/AppFrameworkInfo.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner.xcodeproj/project.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner.xcodeproj/project.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner.xcworkspace/xcshareddata/WorkspaceSettings.xcsettings" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-1024x1024@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-20x20@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-29x29@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-40x40@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-60x60@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@1x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-76x76@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/AppIcon.appiconset/Icon-App-83.5x83.5@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@2x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/LaunchImage@3x.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Assets.xcassets/LaunchImage.imageset/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Base.lproj/LaunchScreen.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Base.lproj/LaunchScreen.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Base.lproj/Main.storyboard" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Base.lproj/Main.storyboard" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/Runner/Runner-Bridging-Header.h" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/Runner/Runner-Bridging-Header.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/ios/RunnerTests/RunnerTests.swift" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/ios/RunnerTests/RunnerTests.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/datasources/fruit_local_datasource.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/data/datasources/fruit_local_datasource.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/hive/boxes.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/data/hive/boxes.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/models/fruit_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/data/models/fruit_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/data/repositories/fruit_repository_impl.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/data/repositories/fruit_repository_impl.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/domain/entities/fruit.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/domain/entities/fruit.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/domain/repositories/fruit_repository.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/domain/repositories/fruit_repository.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/domain/usecases/get_all_fruits.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/domain/usecases/get_all_fruits.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/presentation/pages/fruits_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/presentation/pages/fruits_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/presentation/providers/fruit_provider.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/presentation/providers/fruit_provider.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/features/fruits/presentation/widgets/fruit_tile.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/features/fruits/presentation/widgets/fruit_tile.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/flutter/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/flutter/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/runner/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/runner/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/runner/main.cc" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/runner/main.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/runner/my_application.cc" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/runner/my_application.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/linux/runner/my_application.h" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/linux/runner/my_application.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Flutter/Flutter-Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Flutter/Flutter-Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Flutter/Flutter-Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Flutter/GeneratedPluginRegistrant.swift" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Flutter/GeneratedPluginRegistrant.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner.xcodeproj/project.pbxproj" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner.xcodeproj/project.pbxproj" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner.xcodeproj/project.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner.xcodeproj/xcshareddata/xcschemes/Runner.xcscheme" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner.xcworkspace/contents.xcworkspacedata" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner.xcworkspace/contents.xcworkspacedata" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner.xcworkspace/xcshareddata/IDEWorkspaceChecks.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/AppDelegate.swift" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/AppDelegate.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/Contents.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_1024.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_128.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_16.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_256.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_32.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Assets.xcassets/AppIcon.appiconset/app_icon_64.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Base.lproj/MainMenu.xib" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Base.lproj/MainMenu.xib" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Configs/AppInfo.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Configs/AppInfo.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Configs/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Configs/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Configs/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Configs/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Configs/Warnings.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Configs/Warnings.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/DebugProfile.entitlements" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/DebugProfile.entitlements" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Info.plist" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Info.plist" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/MainFlutterWindow.swift" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/MainFlutterWindow.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/Runner/Release.entitlements" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/Runner/Release.entitlements" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/macos/RunnerTests/RunnerTests.swift" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/macos/RunnerTests/RunnerTests.swift" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/test/data/datasources/fruit_local_data_source_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/test/data/datasources/fruit_local_data_source_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/test/data/repositories/fruit_repository_impl_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/test/data/repositories/fruit_repository_impl_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/test/domain/usecases/get_all_fruits_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/test/domain/usecases/get_all_fruits_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/test/fixtures/fruit_fixtures.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/test/fixtures/fruit_fixtures.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/test/presentation/pages/fruits_page_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/test/presentation/pages/fruits_page_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/test/presentation/providers/fruit_provider_test.dart" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/test/presentation/providers/fruit_provider_test.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/web/favicon.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/web/favicon.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/web/icons/Icon-192.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/web/icons/Icon-192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/web/icons/Icon-512.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/web/icons/Icon-512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/web/icons/Icon-maskable-192.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/web/icons/Icon-maskable-192.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/web/icons/Icon-maskable-512.png" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/web/icons/Icon-maskable-512.png" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/web/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/web/manifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/flutter/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/flutter/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/flutter/generated_plugin_registrant.cc" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/flutter/generated_plugin_registrant.cc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/flutter/generated_plugin_registrant.h" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/flutter/generated_plugin_registrant.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/flutter/generated_plugins.cmake" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/flutter/generated_plugins.cmake" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/CMakeLists.txt" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/CMakeLists.txt" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/Runner.rc" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/Runner.rc" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/flutter_window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/flutter_window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/flutter_window.h" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/flutter_window.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/main.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/main.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/resource.h" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/resource.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/resources/app_icon.ico" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/resources/app_icon.ico" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/runner.exe.manifest" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/runner.exe.manifest" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/utils.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/utils.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/utils.h" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/utils.h" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/win32_window.cpp" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/win32_window.cpp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/hive_implementation/windows/runner/win32_window.h" beforeDir="false" afterPath="$PROJECT_DIR$/hive_ce_implementation/windows/runner/win32_window.h" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -131,11 +371,20 @@
       <option name="project" value="LOCAL" />
       <updated>1763727329176</updated>
     </task>
-    <option name="localTasksCounter" value="2" />
+    <task id="LOCAL-00002" summary="feat: Implement Hive-based fruit persistence feature&#10;&#10;This commit introduces a complete feature for managing a list of fruits using Hive for local persistence. The implementation follows a clean architecture pattern.&#10;&#10;- **Feature Structure:**&#10;  - Adds domain, data, and presentation layers for a 'fruits' feature.&#10;  - Includes entities, repositories, use cases, models, and datasources.&#10;  - Implements a `FruitProvider` using the Provider package for state management.&#10;  - Creates a `FruitListPage` to display the list of fruits and a `FruitTile` widget.&#10;&#10;- **Persistence:**&#10;  - Integrates `hive_ce` and `hive_ce_flutter` for database operations.&#10;  - Sets up Hive initialization in `main.dart`, including adapter registration.&#10;  - Implements `FruitLocalDataSource` to interact with the Hive box.&#10;  - The repository seeds the database with initial data if it's empty.&#10;&#10;- **Testing:**&#10;  - Adds comprehensive unit tests for the data source, repository, use case, and provider using `mocktail`.&#10;  - Includes widget tests for the `FruitListPage`.&#10;  - Adds integration tests (`integration_test`) to verify app startup and the pull-to-refresh functionality.&#10;  - Removes the default Flutter counter widget test.&#10;&#10;- **iOS/macOS Configuration:**&#10;  - Updates Xcode project files (`.pbxproj`, `.xcconfig`, `.xcworkspacedata`) to include CocoaPods dependencies, likely for Hive.">
+      <option name="closed" value="true" />
+      <created>1763745654806</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1763745654806</updated>
+    </task>
+    <option name="localTasksCounter" value="3" />
     <servers />
   </component>
   <component name="VcsManagerConfiguration">
     <MESSAGE value="feat: Configure initial .gitignore&#10;&#10;Add .gitignore to exclude common IDE files, build artifacts, and OS-specific files." />
-    <option name="LAST_COMMIT_MESSAGE" value="feat: Configure initial .gitignore&#10;&#10;Add .gitignore to exclude common IDE files, build artifacts, and OS-specific files." />
+    <MESSAGE value="feat: Implement Hive-based fruit persistence feature&#10;&#10;This commit introduces a complete feature for managing a list of fruits using Hive for local persistence. The implementation follows a clean architecture pattern.&#10;&#10;- **Feature Structure:**&#10;  - Adds domain, data, and presentation layers for a 'fruits' feature.&#10;  - Includes entities, repositories, use cases, models, and datasources.&#10;  - Implements a `FruitProvider` using the Provider package for state management.&#10;  - Creates a `FruitListPage` to display the list of fruits and a `FruitTile` widget.&#10;&#10;- **Persistence:**&#10;  - Integrates `hive_ce` and `hive_ce_flutter` for database operations.&#10;  - Sets up Hive initialization in `main.dart`, including adapter registration.&#10;  - Implements `FruitLocalDataSource` to interact with the Hive box.&#10;  - The repository seeds the database with initial data if it's empty.&#10;&#10;- **Testing:**&#10;  - Adds comprehensive unit tests for the data source, repository, use case, and provider using `mocktail`.&#10;  - Includes widget tests for the `FruitListPage`.&#10;  - Adds integration tests (`integration_test`) to verify app startup and the pull-to-refresh functionality.&#10;  - Removes the default Flutter counter widget test.&#10;&#10;- **iOS/macOS Configuration:**&#10;  - Updates Xcode project files (`.pbxproj`, `.xcconfig`, `.xcworkspacedata`) to include CocoaPods dependencies, likely for Hive." />
+    <option name="LAST_COMMIT_MESSAGE" value="feat: Implement Hive-based fruit persistence feature&#10;&#10;This commit introduces a complete feature for managing a list of fruits using Hive for local persistence. The implementation follows a clean architecture pattern.&#10;&#10;- **Feature Structure:**&#10;  - Adds domain, data, and presentation layers for a 'fruits' feature.&#10;  - Includes entities, repositories, use cases, models, and datasources.&#10;  - Implements a `FruitProvider` using the Provider package for state management.&#10;  - Creates a `FruitListPage` to display the list of fruits and a `FruitTile` widget.&#10;&#10;- **Persistence:**&#10;  - Integrates `hive_ce` and `hive_ce_flutter` for database operations.&#10;  - Sets up Hive initialization in `main.dart`, including adapter registration.&#10;  - Implements `FruitLocalDataSource` to interact with the Hive box.&#10;  - The repository seeds the database with initial data if it's empty.&#10;&#10;- **Testing:**&#10;  - Adds comprehensive unit tests for the data source, repository, use case, and provider using `mocktail`.&#10;  - Includes widget tests for the `FruitListPage`.&#10;  - Adds integration tests (`integration_test`) to verify app startup and the pull-to-refresh functionality.&#10;  - Removes the default Flutter counter widget test.&#10;&#10;- **iOS/macOS Configuration:**&#10;  - Updates Xcode project files (`.pbxproj`, `.xcconfig`, `.xcworkspacedata`) to include CocoaPods dependencies, likely for Hive." />
   </component>
 </project>
